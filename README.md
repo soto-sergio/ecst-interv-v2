@@ -1,7 +1,7 @@
 # Automating Interventions with Selenium and Python v2.0 (GUI Version)
 ***
 
-This program will let you automate the process for documenting interventions in ecst on the current day of your class intervention (GUI version of [ecst_intrv](https://github.com/soto-sergio/ecst_intrv)
+This program will let you automate the process for documenting interventions in ecst on the current day of your class intervention (GUI version of [ecst_intrv](https://github.com/soto-sergio/ecst_intrv))
 ***
 
 ## Quickstart (Windows)
