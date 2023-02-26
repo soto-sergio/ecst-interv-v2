@@ -25,12 +25,12 @@ e. Create environment variables
 - Install and keep `chromedriver.exe` in the project's folder. [Not required. Driver already included]
 
 2. The program requires you to download your Homeroom Roster as follows:
-- Go to Frontline SIS(TEAMS). 
+- Go to Frontline SIS (TEAMS). 
 - Click on `Enter Classroom Grading` > Select your Homeroom class > Reports > Class Student Listing with Addresses (Excel)
 - Save the roster inside the the project's folders `data/raw/`  
 
-IMPORTANT: Keep the name of the file as it is `ClassStudentListingwithAddresses`. Save as type: `Microsoft Excel Worksheet`.  
-If you are updating an older roster, make sure the name is saved exactly as mentioned. 
+  IMPORTANT: Keep the name of the file as it is `ClassStudentListingwithAddresses`. Save as type: `Microsoft Excel Worksheet`.  
+  If you are updating an older roster, make sure the name is saved exactly as mentioned.   
 
 3. Run the script in the Command Prompt by typing `python ecst_main.py`  
 
