@@ -3,6 +3,7 @@ import time
 import pandas as pd
 import pickle as pkl # to save dictionaries as py file
 from datetime import datetime
+from tkcalendar import DateEntry
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 import tkinter as tk
@@ -169,7 +170,7 @@ def destroy_frames():
 
 ####---------------------------------------------------------------------------------------------------------------------
 #### GUI
-## Login Window
+## Attendance Window
 def window2(mainframe, bg_color):
     global attendance_var
     destroy_frames()
@@ -219,13 +220,15 @@ def window2(mainframe, bg_color):
     frame5.grid_columnconfigure(1,weight = 1)
     frame5.pack(fill="x")
 
-## Attendance Window
+## Login Window
 def window1(frame1,bg_color):
     global user_entry, password_entry, intervention_entry
     ### frame1 widgets
     frame1.pack()
     frame1.pack_propagate(False) 
+    cur_date()
     
+
     tk.Label(  frame1, text = "eCST Login", bg=bg_color, fg='#DDFFE7' ,font = ("TkMenuFonto", 14)).pack(pady = 5)       # ecst Login - Title Label
     ### E number
     tk.Label(  frame1, text = "E Number: ", bg = bg_color, fg = "white", font = ("TkMenuFonto", 12)).pack(pady = 10)   
@@ -239,14 +242,25 @@ def window1(frame1,bg_color):
 
     ### Intervention
     tk.Label( frame1, text = "Intervention: ", bg = bg_color, fg = "white", font = ("TkMenuFonto", 12)).pack(pady = 10)
-    options = ['- Select -','Math', 'Reading']  
-    intervention_entry = tk.StringVar(value = options[0])                             
-    dropdown = tk.OptionMenu( frame1, intervention_entry, *options)
-    dropdown.pack(pady = 5)     #Store credentials and intervention selection in an array
-       
+    intrvOptions = ['- Select -','Math', 'Reading']  
+    intervention_entry = tk.StringVar(value = intrvOptions[0])                             
+    dropdownIntrv = tk.OptionMenu( frame1, intervention_entry, *intrvOptions)
+    dropdownIntrv.pack(pady = 5)     #Store credentials and intervention selection in an array
+
+    #### Date 
+    tk.Label( frame1, text = "Date: ", bg = bg_color, fg = "white", font = ("TkMenuFonto", 12)).pack(pady = 10)
+    calendar = DateEntry(frame1, selectmode ='day')
+    calendar.pack(pady=5)
+    calendar.set_date(date)
+    
+    #dateOptions = ['- Select -', date, 'other']
+    #dateEntry = tk.StringVar(value =dateOptions[0])
+    #dropdownDate = tk.OptionMenu(frame1,dateEntry,*dateOptions)
+    #dropdownDate.pack(pady=5)
+
     ## Login Button (New)        
     login_button= tk.Button( frame1, text = "Login",bg='light grey'  , command = get_login_input)
-    login_button.pack(pady = 40)
+    login_button.pack(pady = 30)
     
 ## Main frame tkinter
 def tk_root():
@@ -256,7 +270,7 @@ def tk_root():
     bg_color = "#3d6466"
     mainframe = tk.Frame(root, bg= bg_color)
     mainframe.pack(fill= "both", expand = True)
-    frame1  = tk.Frame(mainframe , width= 300 , height = 400, bg=bg_color)
+    frame1  = tk.Frame(mainframe , width= 300 , height = 500, bg=bg_color)
     window1(frame1 , bg_color)
 
     root.mainloop()
