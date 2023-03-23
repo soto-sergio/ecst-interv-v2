@@ -35,7 +35,7 @@ def auto_mate_test(final_attendance):
 
     # Intervention minutes
     minutes = 30
-    print('Hi ' +username + ' from auto_mate_test')
+    print('Hi ' +username + ' from auto_mate_test. You want to document a ' + intervention + ' intervention on ' + selectedDate)
     homeroom_roster = homeroom_dict
     
     # eCST Login
@@ -67,7 +67,7 @@ def auto_mate_test(final_attendance):
 
 
             if (check_value == ""):
-                 driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutesDate').send_keys(date) # Date Box
+                 driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutesDate').send_keys(selectedDate) # Date Box
                  driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutes').send_keys(minutes)  # Minutes Box  
                  time.sleep(2)
                  driver.find_element_by_xpath('//*[@id="aipForm"]/div[3]/input').click()   # Save
@@ -79,7 +79,7 @@ def auto_mate_test(final_attendance):
                      check_value = check_box.get_attribute('value')
                      k = k+1
                 else:
-                    driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutesDate').send_keys(date) # Date Box
+                    driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutesDate').send_keys(selectedDate) # Date Box
                     driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutes').send_keys(minutes)  # Minutes Box  
                     time.sleep(3)
                     driver.find_element_by_xpath('//*[@id="aipForm"]/div[3]/input').click()   # Save
@@ -102,7 +102,7 @@ def auto_mate_test(final_attendance):
 
 
             if (check_value == ""):
-                 driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutesDate').send_keys(date) # Date Box
+                 driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutesDate').send_keys(selectedDate) # Date Box
                  driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutes').send_keys(minutes)  # Minutes Box  
                  time.sleep(2)
                  driver.find_element_by_xpath('//*[@id="aipForm"]/div[3]/input').click()   # Save
@@ -114,7 +114,7 @@ def auto_mate_test(final_attendance):
                      check_value = check_box.get_attribute('value')
                      k = k+1
                 else:
-                    driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutesDate').send_keys(date) # Date Box
+                    driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutesDate').send_keys(selectedDate) # Date Box
                     driver.find_element_by_name('aipMeetingMinutesDateList[' + str(k) + '].aipMeetingMinutes').send_keys(minutes)  # Minutes Box  
                     time.sleep(2)
                     driver.find_element_by_xpath('//*[@id="aipForm"]/div[3]/input').click()   # Save
@@ -136,11 +136,12 @@ def get_dict(dict_callback):
 
 ## Get login input entered in window 1
 def get_login_input():
-    global username, password, intervention, input_array
+    global username, password, intervention, input_array, selectedDate
     username = user_entry.get()
     password = password_entry.get()
     intervention =intervention_entry.get()
     inputs_array  = [username, password, intervention]
+    selectedDate = calendar_entry.get()
     # Attendance frame
     window2(mainframe, bg_color)
 
@@ -180,7 +181,7 @@ def window2(mainframe, bg_color):
     frame2.tkraise()
     frame2.pack_propagate(True)
     tk.Label(frame2, text = "Homeroom Roster Attendance", bg=bg_color,fg='#DDFFE7', font = ("TkMenuFonto", 14)).pack(pady=5)   #Homeroom Roster Attendance -  Title Label
-    tk.Label(frame2, text = date, bg = bg_color, fg = "light grey", font = ("TkMenuFonto", 12)).pack(pady = 10)   # Date Label
+    tk.Label(frame2, text = selectedDate, bg = bg_color, fg = "light grey", font = ("TkMenuFonto", 12)).pack(pady = 10)   # Date Label
     frame2.pack()
 
     # Horizontal Frame with Labels Studen name, Present , Absent
@@ -222,7 +223,7 @@ def window2(mainframe, bg_color):
 
 ## Login Window
 def window1(frame1,bg_color):
-    global user_entry, password_entry, intervention_entry
+    global user_entry, password_entry, intervention_entry, calendar_entry
     ### frame1 widgets
     frame1.pack()
     frame1.pack_propagate(False) 
@@ -248,15 +249,10 @@ def window1(frame1,bg_color):
     dropdownIntrv.pack(pady = 5)     #Store credentials and intervention selection in an array
 
     #### Date 
-    tk.Label( frame1, text = "Date: ", bg = bg_color, fg = "white", font = ("TkMenuFonto", 12)).pack(pady = 10)
-    calendar = DateEntry(frame1, selectmode ='day')
-    calendar.pack(pady=5)
-    calendar.set_date(date)
     
-    #dateOptions = ['- Select -', date, 'other']
-    #dateEntry = tk.StringVar(value =dateOptions[0])
-    #dropdownDate = tk.OptionMenu(frame1,dateEntry,*dateOptions)
-    #dropdownDate.pack(pady=5)
+    tk.Label( frame1, text = "Date: ", bg = bg_color, fg = "white", font = ("TkMenuFonto", 12)).pack(pady = 10)
+    calendar_entry = DateEntry(frame1, selectmode ='day', date_pattern='mm/dd/yyyy')  
+    calendar_entry.pack(pady=5)
 
     ## Login Button (New)        
     login_button= tk.Button( frame1, text = "Login",bg='light grey'  , command = get_login_input)
