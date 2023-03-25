@@ -3,4 +3,4 @@ data/processed/homeroom_raw.csv
 data/clean/hr_dict.pkl
 data/clean/homeroom_clean.csv
 data/raw/ClassStudentListingwithAddresses.xlsx
-**/__pycache__/
+__pycache__/
