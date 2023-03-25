@@ -3,6 +3,11 @@
 
 This program will let you automate the process for documenting interventions in ecst on the current day of your class intervention (GUI version of [ecst_intrv](https://github.com/soto-sergio/ecst_intrv))
 ***
+<p align = "center">
+  <img src = "https://user-images.githubusercontent.com/104229323/227680381-a2e1ef6a-05fd-4bc7-be44-952c86c02da7.png" width = 300". height = 400>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src = "https://user-images.githubusercontent.com/104229323/227680336-0a8f98d1-9cc1-493a-ace7-df5199759443.png" width = 350, height = 400>
+</p>
+
 
 ## Quickstart (Windows)
 
