@@ -1,8 +1,13 @@
 # Automating Interventions with Selenium and Python v2.0 (GUI Version)
 ***
 
-This program will let you automate the process for documenting interventions in ecst on the current day of your class intervention (GUI version of [ecst_intrv](https://github.com/soto-sergio/ecst_intrv))
+This program will let you automate the documention of academic interventions in ecst (a student management system) 
+on any given day (GUI version of [ecst_intrv](https://github.com/soto-sergio/ecst_intrv))
 ***
+<p align = "center">
+  <img src = "https://user-images.githubusercontent.com/104229323/227680381-a2e1ef6a-05fd-4bc7-be44-952c86c02da7.png" width = 300". height = 400>        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <img src = "https://user-images.githubusercontent.com/104229323/230721948-4d7d8f03-7f30-497a-916a-5985e6717246.png" width = 340, height = 400>
+</p>
 
 ## Quickstart (Windows)
 
